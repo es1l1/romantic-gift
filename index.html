@@ -1,9 +1,9 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>رسالة حب ❤️</title>
 
 <style>
@@ -14,67 +14,165 @@
 }
 
 body{
-    height:100vh;
+    min-height:100vh;
+    overflow:hidden;
+    font-family:'Tahoma',sans-serif;
     display:flex;
-    flex-direction:column;
     justify-content:center;
     align-items:center;
-    background:linear-gradient(135deg,#ffe6e6,#ffd6f5);
-    font-family:Tahoma,sans-serif;
-    overflow:hidden;
+    background:
+    radial-gradient(circle at top,#ffb6c1,#ff69b4,#ff1493);
+    position:relative;
+}
+
+/* خلفية متحركة */
+body::before{
+    content:"";
+    position:absolute;
+    width:200%;
+    height:200%;
+    background:
+    radial-gradient(circle,rgba(255,255,255,.2) 2px,transparent 3px);
+    background-size:50px 50px;
+    animation:moveBg 30s linear infinite;
+}
+
+@keyframes moveBg{
+    from{transform:translate(0,0);}
+    to{transform:translate(-300px,-300px);}
+}
+
+.card{
+    position:relative;
+    z-index:10;
+    width:90%;
+    max-width:500px;
+    padding:35px;
+    text-align:center;
+
+    background:rgba(255,255,255,.18);
+    backdrop-filter:blur(20px);
+    border-radius:30px;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.2),
+    0 0 40px rgba(255,255,255,.2);
 }
 
 .heart{
-    font-size:120px;
+    font-size:110px;
     cursor:pointer;
-    animation:beat 1s infinite;
-    transition:transform .3s;
     user-select:none;
-}
-
-.heart:hover{
-    transform:scale(1.2);
+    animation:beat 1s infinite;
 }
 
 @keyframes beat{
-    0%,100%{transform:scale(1);}
-    50%{transform:scale(1.15);}
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.2);
+    }
 }
 
-h1{
-    color:#d11d1d;
-    margin-top:15px;
+.title{
+    color:white;
+    font-size:35px;
+    margin:15px 0;
+    text-shadow:0 0 15px rgba(255,255,255,.7);
 }
 
-#message{
-    margin-top:15px;
-    font-size:24px;
-    color:#b30059;
-    min-height:40px;
-    text-align:center;
-}
-
-#counter{
+.message{
+    color:white;
+    font-size:22px;
+    min-height:60px;
     margin-top:10px;
-    color:#555;
+}
+
+.counter{
+    color:#fff;
+    margin-top:15px;
     font-size:18px;
 }
 
-.floating-heart{
-    position:absolute;
-    font-size:30px;
-    animation:floatUp 3s linear forwards;
-    pointer-events:none;
+.question{
+    margin-top:30px;
+    color:white;
+    font-size:28px;
+    font-weight:bold;
 }
 
-@keyframes floatUp{
+.buttons{
+    position:relative;
+    width:100%;
+    height:180px;
+    margin-top:25px;
+}
+
+button{
+    border:none;
+    border-radius:50px;
+    padding:15px 35px;
+    font-size:20px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+#yesBtn{
+    background:linear-gradient(45deg,#ff1744,#ff80ab);
+    color:white;
+    box-shadow:0 0 20px rgba(255,0,80,.5);
+}
+
+#yesBtn:hover{
+    transform:scale(1.1);
+}
+
+#noBtn{
+    position:absolute;
+    background:#555;
+    color:white;
+    left:65%;
+    top:0;
+}
+
+.result{
+    margin-top:20px;
+    font-size:28px;
+    color:white;
+    font-weight:bold;
+    min-height:50px;
+}
+
+.floating-heart{
+    position:fixed;
+    pointer-events:none;
+    z-index:999;
+    animation:fly 4s linear forwards;
+}
+
+@keyframes fly{
     0%{
         opacity:1;
         transform:translateY(0) scale(1);
     }
+
     100%{
         opacity:0;
-        transform:translateY(-250px) scale(1.8);
+        transform:translateY(-120vh) scale(2);
+    }
+}
+
+.sparkle{
+    position:absolute;
+    color:white;
+    animation:sparkle 2s linear infinite;
+}
+
+@keyframes sparkle{
+    50%{
+        transform:scale(1.5);
+        opacity:.5;
     }
 }
 </style>
@@ -82,64 +180,226 @@ h1{
 
 <body>
 
-<div class="heart" id="heart">❤️</div>
+<div class="card">
 
-<h1>أحبك كثيراً!</h1>
+    <div class="heart" id="heart">❤️</div>
 
-<div id="message">اضغط على القلب ❤️</div>
+    <h1 class="title">أحبك كثيراً</h1>
 
-<div id="counter">عدد النقرات: 0</div>
+    <div class="message" id="message">
+        اضغط على القلب ❤️
+    </div>
+
+    <div class="counter" id="counter">
+        عدد النبضات: 0
+    </div>
+
+    <div class="question">
+        هل تحبني؟ 🥺❤️
+    </div>
+
+    <div class="buttons">
+
+        <button id="yesBtn">
+            نعم أحبك ❤️
+        </button>
+
+        <button id="noBtn">
+            لا 💔
+        </button>
+
+    </div>
+
+    <div class="result" id="result"></div>
+
+</div>
 
 <script>
+
 const heart = document.getElementById("heart");
 const message = document.getElementById("message");
 const counter = document.getElementById("counter");
 
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const result = document.getElementById("result");
+
 let clicks = 0;
 
 const messages = [
-    "أنت أجمل شيء في حياتي ❤️",
-    "كل نبضة قلب تقول أحبك 💖",
-    "وجودك يجعل الحياة أجمل 🌹",
-    "أحبك أكثر في كل ثانية 💘",
-    "أنت سعادتي وراحتي ❤️",
-    "أنت نبض القلب 💓"
+"أنت أجمل شخص في حياتي ❤️",
+"كل نبضة من قلبي تنادي باسمك 💖",
+"وجودك يجعل أيامي أجمل 🌹",
+"أحبك أكثر من الأمس وأقل من الغد ❤️",
+"أنت سعادتي وراحتي وطمأنينتي 💕",
+"أنت أجمل هدية من القدر 💘",
+"قلبي اختارك دون تردد ❤️"
 ];
 
-heart.addEventListener("click", (e) => {
+heart.addEventListener("click",()=>{
 
     clicks++;
-    counter.textContent = `عدد النقرات: ${clicks}`;
 
-    const randomMessage =
-        messages[Math.floor(Math.random() * messages.length)];
+    counter.innerHTML =
+    `عدد النبضات: ${clicks}`;
 
-    message.textContent = randomMessage;
+    const random =
+    messages[Math.floor(Math.random()*messages.length)];
 
-    // تكبير القلب عند النقر
-    heart.style.transform = "scale(1.4)";
-    setTimeout(() => {
-        heart.style.transform = "scale(1)";
-    }, 200);
+    message.innerHTML = random;
 
-    // إنشاء قلب متطاير
-    const floatingHeart = document.createElement("div");
-    floatingHeart.classList.add("floating-heart");
-    floatingHeart.innerHTML = "❤️";
-
-    floatingHeart.style.left =
-        (e.clientX - 15) + "px";
-
-    floatingHeart.style.top =
-        (e.clientY - 15) + "px";
-
-    document.body.appendChild(floatingHeart);
-
-    setTimeout(() => {
-        floatingHeart.remove();
-    }, 3000);
+    createHeartRain(8);
 });
+
+/* زر نعم */
+
+yesBtn.addEventListener("click",()=>{
+
+    result.innerHTML =
+    "🥰 كنت أعلم ذلك! أحبك أكثر مما تتخيل ❤️";
+
+    createHeartRain(80);
+
+    yesBtn.style.transform = "scale(1.25)";
+});
+
+/* زر لا يهرب */
+
+function moveNoButton(){
+
+    const container =
+    document.querySelector(".buttons");
+
+    const maxX =
+    container.clientWidth -
+    noBtn.offsetWidth;
+
+    const maxY =
+    container.clientHeight -
+    noBtn.offsetHeight;
+
+    const x =
+    Math.random()*maxX;
+
+    const y =
+    Math.random()*maxY;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+
+/* كمبيوتر */
+noBtn.addEventListener(
+"mouseenter",
+moveNoButton
+);
+
+/* هاتف */
+noBtn.addEventListener(
+"touchstart",
+function(e){
+    e.preventDefault();
+    moveNoButton();
+}
+);
+
+/* يهرب عند الاقتراب بالإصبع */
+document.addEventListener(
+"touchmove",
+function(e){
+
+    const touch =
+    e.touches[0];
+
+    const rect =
+    noBtn.getBoundingClientRect();
+
+    const centerX =
+    rect.left + rect.width/2;
+
+    const centerY =
+    rect.top + rect.height/2;
+
+    const distance =
+    Math.hypot(
+        touch.clientX-centerX,
+        touch.clientY-centerY
+    );
+
+    if(distance < 100){
+        moveNoButton();
+    }
+}
+);
+
+/* قلوب متطايرة */
+
+function createHeartRain(count){
+
+    for(let i=0;i<count;i++){
+
+        const heart =
+        document.createElement("div");
+
+        heart.className =
+        "floating-heart";
+
+        heart.innerHTML =
+        ["❤️","💖","💕","💘","💝"]
+        [Math.floor(Math.random()*5)];
+
+        heart.style.left =
+        Math.random()*100 + "vw";
+
+        heart.style.top =
+        "100vh";
+
+        heart.style.fontSize =
+        (20 + Math.random()*40) + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+            heart.remove();
+        },4000);
+    }
+}
+
+/* قلوب مستمرة بالخلفية */
+
+setInterval(()=>{
+    createHeartRain(1);
+},1200);
+
+/* نجوم لامعة */
+
+for(let i=0;i<25;i++){
+
+    const star =
+    document.createElement("div");
+
+    star.className =
+    "sparkle";
+
+    star.innerHTML = "✨";
+
+    star.style.left =
+    Math.random()*100 + "vw";
+
+    star.style.top =
+    Math.random()*100 + "vh";
+
+    star.style.fontSize =
+    (10+Math.random()*20)+"px";
+
+    star.style.animationDelay =
+    Math.random()*2+"s";
+
+    document.body.appendChild(star);
+}
+
 </script>
 
 </body>
 </html>
+```
