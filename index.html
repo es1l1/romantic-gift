@@ -3,163 +3,150 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>❤️ رسالة حب ❤️</title>
+<title>❤️ أحبك كثيراً ❤️</title>
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-    min-height:100vh;
-    overflow:hidden;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-family:Tahoma,sans-serif;
-    background:linear-gradient(135deg,#ff5fa2,#ff7ac6,#ff4da6);
-    position:relative;
+font-family:Tahoma,sans-serif;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+background:linear-gradient(135deg,#ff5f9e,#ff77b7,#ff4f95);
+position:relative;
 }
 
-/* خلفية نقاط */
+/* خلفية ناعمة */
 body::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background-image:radial-gradient(rgba(255,255,255,.3) 2px, transparent 2px);
-    background-size:40px 40px;
-    animation:bgMove 20s linear infinite;
-}
-
-@keyframes bgMove{
-    from{transform:translate(0,0);}
-    to{transform:translate(-100px,-100px);}
+content:"";
+position:absolute;
+inset:0;
+background-image:
+radial-gradient(rgba(255,255,255,.25) 1.5px,transparent 1.5px);
+background-size:40px 40px;
+opacity:.4;
 }
 
 .card{
-    position:relative;
-    z-index:10;
-    width:90%;
-    max-width:520px;
-    padding:35px;
-    border-radius:30px;
-    text-align:center;
-    backdrop-filter:blur(15px);
-    background:rgba(255,255,255,.18);
-    box-shadow:0 10px 40px rgba(0,0,0,.15);
+position:relative;
+z-index:2;
+width:90%;
+max-width:500px;
+padding:30px;
+border-radius:30px;
+text-align:center;
+background:rgba(255,255,255,.18);
+box-shadow:0 10px 30px rgba(0,0,0,.15);
 }
 
 .heart{
-    font-size:110px;
-    cursor:pointer;
-    user-select:none;
-    animation:beat 1s infinite;
+font-size:100px;
+cursor:pointer;
+user-select:none;
+animation:beat 1s infinite;
 }
 
 @keyframes beat{
-    0%,100%{transform:scale(1);}
-    50%{transform:scale(1.18);}
+0%,100%{
+transform:scale(1);
+}
+50%{
+transform:scale(1.15);
+}
 }
 
-.title{
-    color:white;
-    font-size:40px;
-    margin-top:10px;
+h1{
+color:white;
+font-size:38px;
+margin-top:10px;
 }
 
 .message{
-    color:white;
-    margin-top:15px;
-    min-height:60px;
-    font-size:22px;
+color:white;
+font-size:22px;
+margin-top:15px;
+min-height:60px;
 }
 
 .counter{
-    color:white;
-    margin-top:15px;
-    font-size:18px;
+margin-top:10px;
+color:white;
+font-size:18px;
 }
 
 .question{
-    color:white;
-    margin-top:25px;
-    font-size:30px;
-    font-weight:bold;
+margin-top:25px;
+font-size:28px;
+font-weight:bold;
+color:white;
 }
 
 .buttons{
-    position:relative;
-    height:220px;
-    margin-top:25px;
+position:relative;
+height:180px;
+margin-top:20px;
 }
 
 button{
-    border:none;
-    border-radius:50px;
-    padding:15px 35px;
-    font-size:20px;
-    cursor:pointer;
-    transition:.3s;
+border:none;
+padding:15px 30px;
+border-radius:50px;
+font-size:20px;
+cursor:pointer;
+transition:.25s;
 }
 
 #yesBtn{
-    background:linear-gradient(45deg,#ff1744,#ff5f9e);
-    color:white;
-    box-shadow:0 0 25px rgba(255,0,100,.5);
+background:linear-gradient(45deg,#ff1744,#ff5f9e);
+color:white;
+box-shadow:0 0 15px rgba(255,0,100,.35);
 }
 
 #yesBtn:hover{
-    transform:scale(1.08);
+transform:scale(1.05);
 }
 
 #noBtn{
-    position:absolute;
-    left:50%;
-    top:100px;
-    transform:translateX(-50%);
-    background:#555;
-    color:white;
+position:absolute;
+left:50%;
+top:90px;
+transform:translateX(-50%);
+background:#555;
+color:white;
 }
 
 .result{
-    color:white;
-    margin-top:20px;
-    font-size:30px;
-    font-weight:bold;
-    min-height:60px;
+margin-top:15px;
+font-size:28px;
+font-weight:bold;
+color:white;
+min-height:60px;
 }
 
 .floating-heart{
-    position:fixed;
-    pointer-events:none;
-    animation:fly 4s linear forwards;
-    z-index:9999;
+position:fixed;
+pointer-events:none;
+z-index:9999;
+animation:floatUp 3s linear forwards;
+will-change:transform,opacity;
 }
 
-@keyframes fly{
-    0%{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-    100%{
-        opacity:0;
-        transform:translateY(-120vh) scale(2);
-    }
+@keyframes floatUp{
+from{
+transform:translateY(0) scale(1);
+opacity:1;
 }
-
-.sparkle{
-    position:absolute;
-    color:white;
-    animation:sparkle 2s infinite;
+to{
+transform:translateY(-100vh) scale(1.8);
+opacity:0;
 }
-
-@keyframes sparkle{
-    50%{
-        transform:scale(1.5);
-        opacity:.4;
-    }
 }
 </style>
 </head>
@@ -168,28 +155,28 @@ button{
 
 <div class="card">
 
-    <div id="heart" class="heart">❤️</div>
+<div id="heart" class="heart">❤️</div>
 
-    <h1 class="title">أحبك كثيراً</h1>
+<h1>أحبك كثيراً</h1>
 
-    <div id="message" class="message">
-        اضغط على القلب ❤️
-    </div>
+<div id="message" class="message">
+اضغط على القلب ❤️
+</div>
 
-    <div id="counter" class="counter">
-        عدد النبضات: 0
-    </div>
+<div id="counter" class="counter">
+عدد النبضات: 0
+</div>
 
-    <div class="question">
-        هل تحبني؟ 🥺❤️
-    </div>
+<div class="question">
+هل تحبني؟ 🥺❤️
+</div>
 
-    <div class="buttons">
-        <button id="yesBtn">نعم أحبك ❤️</button>
-        <button id="noBtn">لا 💔</button>
-    </div>
+<div class="buttons">
+<button id="yesBtn">نعم أحبك ❤️</button>
+<button id="noBtn">لا 💔</button>
+</div>
 
-    <div id="result" class="result"></div>
+<div id="result" class="result"></div>
 
 </div>
 
@@ -198,145 +185,117 @@ button{
 const heart = document.getElementById("heart");
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
-const counter = document.getElementById("counter");
 const message = document.getElementById("message");
+const counter = document.getElementById("counter");
 const result = document.getElementById("result");
 
 let clicks = 0;
 
 const messages = [
-"أنت أجمل شخص في حياتي ❤️",
-"كل نبضة من قلبي تنادي باسمك 💖",
-"وجودك يجعل أيامي أجمل 🌹",
-"أحبك أكثر من الأمس وأقل من الغد ❤️",
-"أنت سعادتي وراحتي 💕",
-"أنت أجمل هدية من القدر 💘",
+"أنت أجمل شيء حدث في حياتي ❤️",
+"كل نبضة في قلبي تنادي باسمك 💖",
+"وجودك يجعل الحياة أجمل 🌹",
+"أحبك أكثر كل يوم 💕",
+"أنت سعادتي وراحتي 💘",
 "قلبي اختارك دون تردد ❤️"
 ];
 
 function updateCounter(){
-    clicks++;
-    counter.textContent = "عدد النبضات: " + clicks;
+clicks++;
+counter.textContent = "عدد النبضات: " + clicks;
 }
 
 heart.addEventListener("click",()=>{
 
-    updateCounter();
+updateCounter();
 
-    message.textContent =
-    messages[Math.floor(Math.random()*messages.length)];
+message.textContent =
+messages[Math.floor(Math.random()*messages.length)];
 
-    createHeartRain(8);
+createHearts(6);
+
 });
 
 yesBtn.addEventListener("click",()=>{
 
-    updateCounter();
+updateCounter();
 
-    result.innerHTML =
-    "🥰 كنت أعلم ذلك! أحبك أكثر مما تتخيل ❤️";
+result.innerHTML =
+"🥰 كنت أعلم ذلك! أحبك أكثر مما تتخيل ❤️";
 
-    yesBtn.style.transform = "scale(1.15)";
+createHearts(15);
 
-    createHeartRain(80);
+yesBtn.style.transform="scale(1.08)";
+setTimeout(()=>{
+yesBtn.style.transform="scale(1)";
+},300);
+
 });
+
+/* زر لا يهرب */
 
 function moveNoButton(){
 
-    const container =
-    document.querySelector(".buttons");
+const area =
+document.querySelector(".buttons");
 
-    const maxX =
-    container.clientWidth -
-    noBtn.offsetWidth;
+const maxX =
+area.clientWidth - noBtn.offsetWidth;
 
-    const maxY =
-    container.clientHeight -
-    noBtn.offsetHeight;
+const maxY =
+area.clientHeight - noBtn.offsetHeight;
 
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
+const x = Math.random()*maxX;
+const y = Math.random()*maxY;
 
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
+noBtn.style.left = x + "px";
+noBtn.style.top = y + "px";
 }
 
-noBtn.addEventListener("mouseenter", moveNoButton);
+noBtn.addEventListener("mouseenter",moveNoButton);
 
-noBtn.addEventListener("touchstart", function(e){
-    e.preventDefault();
-    moveNoButton();
+noBtn.addEventListener("touchstart",(e)=>{
+e.preventDefault();
+moveNoButton();
 });
 
-document.addEventListener("touchmove", function(e){
+/* قلوب خفيفة */
 
-    const touch = e.touches[0];
-    const rect = noBtn.getBoundingClientRect();
+function createHearts(count){
 
-    const centerX = rect.left + rect.width/2;
-    const centerY = rect.top + rect.height/2;
+const icons=["❤️","💖","💕","💘"];
 
-    const distance = Math.hypot(
-        touch.clientX - centerX,
-        touch.clientY - centerY
-    );
+for(let i=0;i<count;i++){
 
-    if(distance < 100){
-        moveNoButton();
-    }
-});
+const h=document.createElement("div");
 
-function createHeartRain(count){
+h.className="floating-heart";
 
-    const hearts = ["❤️","💖","💕","💘","💝"];
+h.textContent=
+icons[Math.floor(Math.random()*icons.length)];
 
-    for(let i=0;i<count;i++){
+h.style.left=
+Math.random()*100+"vw";
 
-        const h = document.createElement("div");
+h.style.bottom="0";
 
-        h.className = "floating-heart";
+h.style.fontSize=
+(18+Math.random()*20)+"px";
 
-        h.innerHTML =
-        hearts[Math.floor(Math.random()*hearts.length)];
+document.body.appendChild(h);
 
-        h.style.left =
-        Math.random()*100 + "vw";
+setTimeout(()=>{
+h.remove();
+},3000);
 
-        h.style.top = "100vh";
-
-        h.style.fontSize =
-        (20 + Math.random()*40) + "px";
-
-        document.body.appendChild(h);
-
-        setTimeout(()=>{
-            h.remove();
-        },4000);
-    }
 }
+}
+
+/* قلب كل 6 ثواني فقط */
 
 setInterval(()=>{
-    createHeartRain(1);
-},1500);
-
-for(let i=0;i<25;i++){
-
-    const star = document.createElement("div");
-
-    star.className = "sparkle";
-    star.innerHTML = "✨";
-
-    star.style.left = Math.random()*100 + "vw";
-    star.style.top = Math.random()*100 + "vh";
-
-    star.style.fontSize =
-    (10 + Math.random()*20) + "px";
-
-    star.style.animationDelay =
-    Math.random()*2 + "s";
-
-    document.body.appendChild(star);
-}
+createHearts(1);
+},6000);
 
 </script>
 
