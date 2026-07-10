@@ -1,14 +1,145 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>رسالة حب ❤️</title>
+
 <style>
-    body { display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #ffe6e6; font-family: sans-serif; }
-    .heart { color: red; font-size: 100px; animation: beat 1s infinite; }
-    @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ffe6e6,#ffd6f5);
+    font-family:Tahoma,sans-serif;
+    overflow:hidden;
+}
+
+.heart{
+    font-size:120px;
+    cursor:pointer;
+    animation:beat 1s infinite;
+    transition:transform .3s;
+    user-select:none;
+}
+
+.heart:hover{
+    transform:scale(1.2);
+}
+
+@keyframes beat{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.15);}
+}
+
+h1{
+    color:#d11d1d;
+    margin-top:15px;
+}
+
+#message{
+    margin-top:15px;
+    font-size:24px;
+    color:#b30059;
+    min-height:40px;
+    text-align:center;
+}
+
+#counter{
+    margin-top:10px;
+    color:#555;
+    font-size:18px;
+}
+
+.floating-heart{
+    position:absolute;
+    font-size:30px;
+    animation:floatUp 3s linear forwards;
+    pointer-events:none;
+}
+
+@keyframes floatUp{
+    0%{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+    100%{
+        opacity:0;
+        transform:translateY(-250px) scale(1.8);
+    }
+}
 </style>
 </head>
+
 <body>
-    <div class="heart">❤️</div>
-    <h1 style="color: #d11d1d; margin-left: 20px;">أحبك كثيراً!</h1>
+
+<div class="heart" id="heart">❤️</div>
+
+<h1>أحبك كثيراً!</h1>
+
+<div id="message">اضغط على القلب ❤️</div>
+
+<div id="counter">عدد النقرات: 0</div>
+
+<script>
+const heart = document.getElementById("heart");
+const message = document.getElementById("message");
+const counter = document.getElementById("counter");
+
+let clicks = 0;
+
+const messages = [
+    "أنت أجمل شيء في حياتي ❤️",
+    "كل نبضة قلب تقول أحبك 💖",
+    "وجودك يجعل الحياة أجمل 🌹",
+    "أحبك أكثر في كل ثانية 💘",
+    "أنت سعادتي وراحتي ❤️",
+    "أنت نبض القلب 💓"
+];
+
+heart.addEventListener("click", (e) => {
+
+    clicks++;
+    counter.textContent = `عدد النقرات: ${clicks}`;
+
+    const randomMessage =
+        messages[Math.floor(Math.random() * messages.length)];
+
+    message.textContent = randomMessage;
+
+    // تكبير القلب عند النقر
+    heart.style.transform = "scale(1.4)";
+    setTimeout(() => {
+        heart.style.transform = "scale(1)";
+    }, 200);
+
+    // إنشاء قلب متطاير
+    const floatingHeart = document.createElement("div");
+    floatingHeart.classList.add("floating-heart");
+    floatingHeart.innerHTML = "❤️";
+
+    floatingHeart.style.left =
+        (e.clientX - 15) + "px";
+
+    floatingHeart.style.top =
+        (e.clientY - 15) + "px";
+
+    document.body.appendChild(floatingHeart);
+
+    setTimeout(() => {
+        floatingHeart.remove();
+    }, 3000);
+});
+</script>
+
 </body>
 </html>
