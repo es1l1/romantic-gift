@@ -1,73 +1,47 @@
 <!DOCTYPE html>
-
 <html lang="ar" dir="rtl">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-<title>🎁 المفاجآت</title>
-
-
-<link rel="stylesheet" href="style.css">
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎁 صندوق المفاجآت</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .gift-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 25px 0;
+        }
+        .gift-box {
+            font-size: 40px;
+            background: #fff5f8;
+            padding: 20px;
+            border-radius: 20px;
+            border: 2px solid #ffadd2;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .gift-box:hover { background: #ff8fcf; transform: scale(1.05); }
+    </style>
 </head>
-
-
 <body>
 
+    <div class="game-container">
+        <h1>🎁 صندوق المفاجآت</h1>
+        <p>افتح الهدايا واكتشف ما يخبئه القدر لكما ❤️</p>
+        
+        <div class="gift-grid" id="gifts-container">
+            <!-- الهدايا ستظهر هنا من الجافا سكريبت -->
+            <div class="gift-box">🎁</div>
+            <div class="gift-box">🎁</div>
+            <div class="gift-box">🎁</div>
+        </div>
 
-<div class="game-container">
+        <div id="surprise-result" style="font-size: 1.3rem; color: #d63384; font-weight: bold; margin-top: 20px;"></div>
 
+        <a href="index.html" class="back">🏠 العودة للرئيسية</a>
+    </div>
 
-<h1>🎁 صندوق المفاجآت</h1>
-
-
-<p>
-افتح الهدايا بعد جمع النقاط ❤️
-</p>
-
-
-<div class="gifts">
-
-
-<button onclick="openGift(1)">
-🎁
-</button>
-
-
-<button onclick="openGift(2)">
-🎁
-</button>
-
-
-<button onclick="openGift(3)">
-🎁
-</button>
-
-
-</div>
-
-
-<div id="giftResult" class="message"></div>
-
-
-<a href="index.html" class="back">
-🏠 الرئيسية
-</a>
-
-
-</div>
-
-
-<script src="app.js"></script>
-
-<script src="surprises.js"></script>
-
-
+    <script src="surprises.js"></script>
 </body>
-
 </html>
