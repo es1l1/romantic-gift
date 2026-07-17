@@ -1,45 +1,20 @@
-const gifts=[
-
-"💌 رسالة: أنت أجمل صدفة في حياتي ❤️",
-
-"🌹 وردة لك لأنك تستحق كل الحب",
-
-"⭐ مفاجأة خاصة: يوم جميل ينتظرك"
-
+// surprises.js
+const surprises = [
+    "✨ أنت أجمل ما حدث في حياتي اليوم!",
+    "💌 أحبك أكثر مما تتخيل.. اليوم هو يومنا!",
+    "🌹 باقة ورد افتراضية لقلبك الجميل.",
+    "🥰 ضحكتك هي عالمي الخاص.",
+    "💍 أنتِ/أنتَ كل شيء بالنسبة لي."
 ];
 
+const gifts = document.querySelectorAll('.gift-box');
+const resultDiv = document.getElementById('surprise-result');
 
-function openGift(id){
-
-
-let result=document.getElementById("giftResult");
-
-
-let points =
-localStorage.getItem("lovePoints") || 0;
-
-
-
-if(points < 20){
-
-result.innerHTML=
-"🔒 تحتاج إلى 20 نقطة لفتح المفاجأة";
-
-return;
-
-}
-
-
-
-result.innerHTML =
-gifts[id-1];
-
-
-if(typeof addPoints==="function"){
-
-addPoints(5);
-
-}
-
-
-}
+gifts.forEach(gift => {
+    gift.addEventListener('click', () => {
+        const randomSurprise = surprises[Math.floor(Math.random() * surprises.length)];
+        resultDiv.innerText = randomSurprise;
+        gift.style.opacity = '0.5'; // لجعل الهدية تبدو مفتوحة
+        gift.style.pointerEvents = 'none'; // تعطيل الضغط عليها مرة أخرى
+    });
+});
