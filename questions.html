@@ -3,110 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>❤️ اختبار القلوب</title>
-    <style>
-        /* تنسيقات الرومانسية المتقدمة */
-        body {
-            margin: 0;
-            min-height: 100vh;
-            /* خلفية متدرجة تزيد من عمق الشعور */
-            background: radial-gradient(circle at center, #fff0f6 0%, #fce7f3 50%, #fbcfe8 100%);
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .game-container {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(15px); /* تأثير الزجاج السحري */
-            padding: 50px;
-            border-radius: 50px;
-            box-shadow: 0 20px 60px rgba(255, 79, 149, 0.3);
-            text-align: center;
-            width: 100%;
-            max-width: 500px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            transition: transform 0.3s ease;
-        }
-
-        h1 {
-            color: #d63384;
-            font-size: 2.5rem;
-            margin-bottom: 25px;
-            text-shadow: 2px 2px 4px rgba(255, 143, 207, 0.3);
-        }
-
-        #question {
-            color: #881337;
-            font-size: 1.6rem;
-            margin-bottom: 30px;
-            line-height: 1.5;
-        }
-
-        #answers {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .answer-btn {
-            background: linear-gradient(to right, #ffffff, #fff5f8);
-            border: 2px solid #ffadd2;
-            padding: 18px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            color: #be185d;
-            font-weight: 600;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .answer-btn:hover {
-            background: #ff4f95;
-            color: white;
-            transform: scale(1.05);
-            border-color: #ff4f95;
-            box-shadow: 0 10px 20px rgba(255, 79, 149, 0.3);
-        }
-
-        #score {
-            font-size: 1.8rem;
-            color: #9d174d;
-            font-weight: bold;
-            margin-top: 30px;
-            padding: 10px;
-            animation: fadeIn 1s ease-in;
-        }
-
-        .back {
-            display: inline-block;
-            margin-top: 40px;
-            color: #ff4f95;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: 0.3s;
-        }
-
-        .back:hover {
-            transform: translateY(-3px);
-            text-shadow: 0 5px 10px rgba(255, 79, 149, 0.2);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+    <title>❓ اختبار الحب</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
     <div class="game-container">
         <h1>❤️ اختبار الحب</h1>
-
+        
         <div id="quiz">
             <h2 id="question">سؤال الحب ينتظرك...</h2>
             <div id="answers">
@@ -116,10 +20,10 @@
 
         <div id="score"></div>
 
-        <a href="index.html" class="back">✨ العودة إلى الرئيسية</a>
+        <a href="index.html" class="back">🏠 العودة للرئيسية</a>
     </div>
 
-    <script src="app.js"></script>
     <script src="questions.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
