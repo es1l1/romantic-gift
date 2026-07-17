@@ -49,3 +49,24 @@ window.onload=function(){
 updatePoints();
 
 }
+// app.js
+
+// دالة لزيادة النقاط
+function addPoints(amount) {
+    let currentPoints = parseInt(localStorage.getItem('lovePoints')) || 0;
+    currentPoints += amount;
+    localStorage.setItem('lovePoints', currentPoints);
+    updatePointsDisplay();
+}
+
+// دالة لتحديث عرض النقاط في الصفحة
+function updatePointsDisplay() {
+    const pointsEl = document.getElementById('points');
+    if (pointsEl) {
+        const points = localStorage.getItem('lovePoints') || 0;
+        pointsEl.innerText = `نقاط الحب: ${points} ❤️`;
+    }
+}
+
+// تحديث النقاط عند تحميل أي صفحة
+window.onload = updatePointsDisplay;
