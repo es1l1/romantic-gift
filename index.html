@@ -1,66 +1,55 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>❤️ Love Adventure</title>
+    <!-- ربط الملف بـ style.css الموحد الذي اتفقنا عليه -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* لمسات خاصة لهذه الصفحة لتعزيز جماليتها */
+        .heart-icon {
+            font-size: 80px;
+            margin-bottom: 10px;
+            display: block;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>❤️ Love Adventure</title>
-
-<link rel="stylesheet" href="style.css">
-
+        #points {
+            color: #d63384;
+            font-size: 1.2rem;
+            margin: 15px 0 25px 0;
+            background: #fff0f6;
+            padding: 10px;
+            border-radius: 20px;
+            display: inline-block;
+            width: auto;
+        }
+    </style>
 </head>
-
 
 <body>
 
+    <div class="game-container">
+        <div class="heart-icon">❤️</div>
+        
+        <h1>رحلة الحب</h1>
+        
+        <p>لعبة رومانسية خاصة لكما 💕</p>
 
-<div class="container">
+        <div id="points">نقاط الحب: 0 ❤️</div>
 
+        <!-- الأزرار تستخدم كلاس .btn الموحد -->
+        <a class="btn" href="wheel.html">🎡 عجلة الحظ</a>
+        <a class="btn" href="questions.html">❓ اختبار الحب</a>
+        <a class="btn" href="surprises.html">🎁 المفاجآت</a>
+    </div>
 
-<div class="heart">
-❤️
-</div>
-
-
-<h1>
-رحلة الحب
-</h1>
-
-
-<p>
-لعبة رومانسية خاصة لكما 💕
-</p>
-
-
-<h3 id="points"></h3>
-
-
-
-<a class="btn" href="wheel.html">
-🎡 عجلة الحظ
-</a>
-
-
-<a class="btn" href="questions.html">
-❓ اختبار الحب
-</a>
-
-
-
-<a class="btn" href="surprises.html">
-🎁 المفاجآت
-</a>
-
-
-
-</div>
-
-
-<script src="app.js"></script>
-
-
+    <script src="app.js"></script>
 </body>
-
 </html>
