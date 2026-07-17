@@ -59,3 +59,34 @@ h1 { color: var(--primary-color); font-size: 2.2rem; margin-bottom: 20px; }
 }
 
 .back:hover { opacity: 1; text-decoration: underline; }
+/* أضف هذا الجزء لملف style.css الحالي */
+
+/* تأثير الخلفية الوردية المتحركة */
+body {
+    background: linear-gradient(-45deg, #fff0f6, #fce7f3, #ffe4e6, #fbcfe8);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* إضافة لمعة للقلوب والأسطح */
+.game-container {
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 30px rgba(255, 79, 149, 0.2);
+}
+
+/* تحسين شكل الأزرار لتكون أكثر "واقعية" */
+.btn {
+    box-shadow: 0 4px 15px rgba(255, 79, 149, 0.3);
+    border: none;
+    cursor: pointer;
+}
+
+.btn:active {
+    transform: scale(0.95); /* تأثير الضغط الواقعي */
+}
