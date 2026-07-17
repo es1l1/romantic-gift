@@ -3,284 +3,303 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>❤️حبيبة روحي❤️</title>
+<title>❤️ لعبة الحب ❤️</title>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
 
 body{
-font-family:Tahoma,sans-serif;
-min-height:100vh;
+margin:0;
+font-family:tahoma;
+background:linear-gradient(135deg,#ff4f95,#ff77b7);
 display:flex;
 justify-content:center;
 align-items:center;
+min-height:100vh;
 overflow:hidden;
-background:linear-gradient(135deg,#ff5f9e,#ff77b7,#ff4f95);
-position:relative;
-}
-
-/* خلفية ناعمة */
-body::before{
-content:"";
-position:absolute;
-inset:0;
-background-image:
-radial-gradient(rgba(255,255,255,.25) 1.5px,transparent 1.5px);
-background-size:40px 40px;
-opacity:.4;
 }
 
 .card{
-position:relative;
-z-index:2;
 width:90%;
 max-width:500px;
-padding:30px;
-border-radius:30px;
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(10px);
+padding:25px;
+border-radius:25px;
 text-align:center;
-background:rgba(255,255,255,.18);
-box-shadow:0 10px 30px rgba(0,0,0,.15);
-}
-
-.heart{
-font-size:100px;
-cursor:pointer;
-user-select:none;
-animation:beat 1s infinite;
-}
-
-@keyframes beat{
-0%,100%{
-transform:scale(1);
-}
-50%{
-transform:scale(1.15);
-}
+color:white;
 }
 
 h1{
-color:white;
-font-size:38px;
-margin-top:10px;
-}
-
-.message{
-color:white;
-font-size:22px;
-margin-top:15px;
-min-height:60px;
-}
-
-.counter{
-margin-top:10px;
-color:white;
-font-size:18px;
-}
-
-.question{
-margin-top:25px;
-font-size:28px;
-font-weight:bold;
-color:white;
-}
-
-.buttons{
-position:relative;
-height:180px;
-margin-top:20px;
+margin-top:0;
 }
 
 button{
+padding:12px 25px;
 border:none;
-padding:15px 30px;
-border-radius:50px;
-font-size:20px;
+border-radius:30px;
 cursor:pointer;
-transition:.25s;
+font-size:18px;
+margin:5px;
 }
 
 #yesBtn{
-background:linear-gradient(45deg,#ff1744,#ff5f9e);
+background:#ff1744;
 color:white;
-box-shadow:0 0 15px rgba(255,0,100,.35);
-}
-
-#yesBtn:hover{
-transform:scale(1.05);
 }
 
 #noBtn{
 position:absolute;
-left:50%;
-top:90px;
-transform:translateX(-50%);
-background:#555;
+background:#444;
 color:white;
 }
 
-.result{
-margin-top:15px;
-font-size:28px;
+#wheel{
+margin-top:20px;
+padding:15px;
+background:white;
+color:#ff1744;
+border-radius:15px;
+font-size:22px;
 font-weight:bold;
-color:white;
+}
+
+#questionBox{
+margin-top:20px;
+font-size:20px;
+}
+
+#level{
+font-size:22px;
+margin:10px 0;
+}
+
+#message{
+margin-top:10px;
+font-size:20px;
 min-height:60px;
 }
 
-.floating-heart{
+.heart{
 position:fixed;
+font-size:25px;
+animation:fly 3s linear forwards;
 pointer-events:none;
-z-index:9999;
-animation:floatUp 3s linear forwards;
-will-change:transform,opacity;
 }
 
-@keyframes floatUp{
+@keyframes fly{
 from{
-transform:translateY(0) scale(1);
+transform:translateY(0);
 opacity:1;
 }
 to{
-transform:translateY(-100vh) scale(1.8);
+transform:translateY(-100vh);
 opacity:0;
 }
 }
+
 </style>
 </head>
-
 <body>
 
 <div class="card">
 
-<div id="heart" class="heart">❤️</div>
+<h1>❤️ لعبة الحب ❤️</h1>
 
-<h1>حبيبة روحي</h1>
-
-<div id="message" class="message">
-اكبسي على القلب ❤️
+<div id="score">
+نقاط الحب: 0
 </div>
 
-<div id="counter" class="counter">
-عدد النبضات: 0
+<div id="level">
+المستوى 1
 </div>
 
-<div class="question">
- تحبيني؟ 🥺❤️
+<div id="message">
+اضغطي أحبك لبدء المغامرة ❤️
 </div>
 
-<div class="buttons">
-<button id="yesBtn">اه أحبك ❤️</button>
+<button id="yesBtn">أحبك ❤️</button>
 <button id="noBtn">لا 💔</button>
+
+<hr>
+
+<h2>🎡 عجلة الحظ</h2>
+
+<div id="wheel">
+اضغطي للدوران
 </div>
 
-<div id="result" class="result"></div>
+<button onclick="spinWheel()">
+لف العجلة
+</button>
+
+<hr>
+
+<h2>❓ سؤال رومانسي</h2>
+
+<div id="questionBox">
+اضغطي السؤال
+</div>
+
+<button onclick="nextQuestion()">
+سؤال جديد
+</button>
 
 </div>
 
 <script>
 
-const heart = document.getElementById("heart");
-const yesBtn = document.getElementById("yesBtn");
-const noBtn = document.getElementById("noBtn");
-const message = document.getElementById("message");
-const counter = document.getElementById("counter");
-const result = document.getElementById("result");
+let points=0;
 
-let clicks = 0;
+const score=document.getElementById("score");
+const level=document.getElementById("level");
+const message=document.getElementById("message");
 
-const messages = [
-"أنت أجمل شيء صار بحياتي ❤️",
-"كل نبضة في قلبي تنادي باسمج 💖",
-"وجودج يخلي الحياة أجمل 🌹",
-"أحبج أكثر كل يوم 💕",
-"أنتي سعادتي وراحتي 💘",
-"قلبي اختارج بدون تردد ❤️"
+const levels=[
+"بداية الحب ❤️",
+"إعجاب كبير 💕",
+"اشتياق دائم 💖",
+"حب مجنون 💘",
+"ملكة القلب 👑"
 ];
 
-function updateCounter(){
-clicks++;
-counter.textContent = "عدد النبضات: " + clicks;
-}
+const levelMessages=[
+"أنت أجمل شيء بحياتي",
+"كل يوم أحبك أكثر",
+"وجودك سعادة",
+"قلبي لا يعرف غيرك",
+"أنتِ كل شيء بالنسبة لي"
+];
 
-heart.addEventListener("click",()=>{
+document.getElementById("yesBtn")
+.addEventListener("click",()=>{
 
-updateCounter();
+points++;
 
-message.textContent =
-messages[Math.floor(Math.random()*messages.length)];
+score.innerHTML=
+"نقاط الحب: "+points;
 
-createHearts(6);
+let currentLevel=
+Math.min(
+Math.floor(points/5),
+levels.length-1
+);
+
+level.innerHTML=
+levels[currentLevel];
+
+message.innerHTML=
+levelMessages[currentLevel];
+
+createHearts(10);
 
 });
 
-yesBtn.addEventListener("click",()=>{
+const noBtn=
+document.getElementById("noBtn");
 
-updateCounter();
+function moveNo(){
 
-result.innerHTML =
-"🥰 كنت أعلم ذلك! أحبج أكثر مما تتخيلي ❤️";
+const x=
+Math.random()*
+(window.innerWidth-120);
 
-createHearts(15);
+const y=
+Math.random()*
+(window.innerHeight-80);
 
-yesBtn.style.transform="scale(1.08)";
-setTimeout(()=>{
-yesBtn.style.transform="scale(1)";
-},300);
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
 
-});
-
-/* زر لا يهرب */
-
-function moveNoButton(){
-
-const area =
-document.querySelector(".buttons");
-
-const maxX =
-area.clientWidth - noBtn.offsetWidth;
-
-const maxY =
-area.clientHeight - noBtn.offsetHeight;
-
-const x = Math.random()*maxX;
-const y = Math.random()*maxY;
-
-noBtn.style.left = x + "px";
-noBtn.style.top = y + "px";
 }
 
-noBtn.addEventListener("mouseenter",moveNoButton);
+noBtn.addEventListener("mouseenter",moveNo);
 
 noBtn.addEventListener("touchstart",(e)=>{
 e.preventDefault();
-moveNoButton();
+moveNo();
 });
 
-/* قلوب خفيفة */
+const prizes=[
+"🌹 وردة حب",
+"💌 رسالة سرية",
+"💍 خاتم رمزي",
+"❤️ 5 نقاط حب",
+"😘 قبلة افتراضية",
+"👑 لقب ملكة القلب"
+];
+
+function spinWheel(){
+
+const result=
+prizes[
+Math.floor(
+Math.random()*prizes.length
+)
+];
+
+document.getElementById("wheel")
+.innerHTML=result;
+
+createHearts(15);
+
+}
+
+const questions=[
+
+{
+q:"من الأجمل؟",
+a:"أكيد أنتِ ❤️"
+},
+
+{
+q:"من ساكن القلب؟",
+a:"أنتِ فقط 💕"
+},
+
+{
+q:"هل يوجد أجمل منك؟",
+a:"مستحيل 😍"
+},
+
+{
+q:"من يجعل يومي سعيداً؟",
+a:"أنتِ 🌹"
+}
+
+];
+
+function nextQuestion(){
+
+const item=
+questions[
+Math.floor(
+Math.random()*questions.length
+)
+];
+
+document.getElementById("questionBox")
+.innerHTML=
+item.q+"<br><br>"+item.a;
+
+createHearts(8);
+
+}
 
 function createHearts(count){
 
-const icons=["❤️","💖","💕","💘"];
-
 for(let i=0;i<count;i++){
 
-const h=document.createElement("div");
+const h=
+document.createElement("div");
 
-h.className="floating-heart";
+h.className="heart";
 
-h.textContent=
-icons[Math.floor(Math.random()*icons.length)];
+h.innerHTML="❤️";
 
 h.style.left=
 Math.random()*100+"vw";
 
 h.style.bottom="0";
-
-h.style.fontSize=
-(18+Math.random()*20)+"px";
 
 document.body.appendChild(h);
 
@@ -289,13 +308,8 @@ h.remove();
 },3000);
 
 }
+
 }
-
-/* قلب كل 6 ثواني فقط */
-
-setInterval(()=>{
-createHearts(1);
-},6000);
 
 </script>
 
