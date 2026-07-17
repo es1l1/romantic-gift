@@ -12,17 +12,26 @@ function loadRandomQuestion() {
     questionEl.innerText = randomQuestion.question;
     answersEl.innerHTML = '';
 
+ // ... (بقية الكود)
+
     randomQuestion.answers.forEach(answer => {
         const button = document.createElement('button');
         button.innerText = answer;
         button.className = 'btn';
+        
+        // هذا هو الجزء المسؤول عن زيادة النقاط عند الضغط على أي إجابة
         button.onclick = () => {
-            addPoints(10);
+            addPoints(10); // تزيد النقاط بمقدار 10 مع كل إجابة
+            
+            // إظهار رسالة تأكيد وتحديث الشاشة
             questionEl.innerText = "❤️ اختيار رائع! تمت إضافة النقاط.";
-            answersEl.innerHTML = '';
+            answersEl.innerHTML = ''; 
         };
+        
         answersEl.appendChild(button);
     });
+
+// ... (بقية الكود)
 }
 
 // تشغيل عند تحميل الصفحة بعد تأخير بسيط لضمان تحميل app.js
