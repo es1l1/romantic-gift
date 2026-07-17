@@ -38,6 +38,12 @@ function loadRandomQuestion() {
         const button = document.createElement('button');
         button.innerText = answer;
         button.classList.add('btn'); // استخدام الكلاس الموحد
+        // داخل ملف questions.js
+button.onclick = () => {
+    addPoints(10); // إضافة 10 نقاط عند كل إجابة
+    questionEl.innerText = "❤️ اختيار رائع! تمت إضافة نقاط الحب.";
+    answersEl.innerHTML = ''; 
+};
         button.onclick = () => {
             // هنا يمكنك إضافة تفاعل عند الضغط (مثل تغيير اللون أو إظهار رسالة)
             button.style.background = "#ff4f95";
