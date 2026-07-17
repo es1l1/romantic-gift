@@ -6,105 +6,34 @@
     <title>🎡 عجلة الحب والقدر</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* تنسيقات إضافية لتعزيز الطابع الرومنسي */
-        body {
-            background: radial-gradient(circle, #ffe4e6, #fbcfe8);
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            min-height: 100vh;
+        /* تنسيق خاص للعجلة لتكون داخل الحاوية الموحدة */
+        #wheel {
+            margin: 20px auto;
+            display: block;
+        }
+        .wheel-container {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            margin: 0;
-        }
-
-        .game-container {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 3rem;
-            border-radius: 50px;
-            box-shadow: 0 20px 40px rgba(255, 79, 149, 0.2);
-            text-align: center;
-            max-width: 500px;
-            border: 3px solid #ff8fcf;
-        }
-
-        h1 {
-            color: #d63384;
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        p {
-            color: #881337;
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.8;
-        }
-
-        .wheel-box {
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        #spin {
-            background: #ff4f95;
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 10px 20px rgba(255, 79, 149, 0.3);
-            margin-top: 20px;
-        }
-
-        #spin:hover {
-            background: #e91e70;
-            transform: scale(1.05);
-        }
-
-        .message {
-            margin-top: 20px;
-            font-size: 1.3rem;
-            color: #be185d;
-            font-weight: bold;
-            min-height: 50px;
-        }
-
-        .back {
-            display: inline-block;
-            margin-top: 20px;
-            color: #ff4f95;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .back:hover {
-            text-decoration: underline;
         }
     </style>
 </head>
-
 <body>
 
     <div class="game-container">
         <h1>🎡 عجلة الحب والقدر</h1>
         <p>أدر العجلة لتكتشف نصيبك الجميل اليوم ❤️</p>
 
-        <div class="wheel-box">
+        <div class="wheel-container">
             <canvas id="wheel" width="320" height="320"></canvas>
-            <br>
-            <button id="spin">🎯 أدر العجلة الآن</button>
+            <button id="spin" class="btn">🎯 أدر العجلة الآن</button>
         </div>
 
-        <div id="result" class="message"></div>
+        <div id="result" style="font-size: 1.5rem; color: #d63384; font-weight: bold; margin-top: 20px;"></div>
 
-        <a href="index.html" class="back">🏠 العودة إلى القلب الكبير</a>
+        <a href="index.html" class="back">🏠 العودة إلى الرئيسية</a>
     </div>
 
-    <script src="app.js"></script>
     <script src="wheel.js"></script>
 </body>
 </html>
