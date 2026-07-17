@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>❤️ اختبار الحب والقلوب</title>
+    <title>❤️ اختبار القلوب</title>
     <style>
-        /* تنسيقات الجمال والرومانسية */
+        /* تنسيقات الرومانسية المتقدمة */
         body {
             margin: 0;
             min-height: 100vh;
-            background: linear-gradient(135deg, #fff0f6, #fce7f3);
+            /* خلفية متدرجة تزيد من عمق الشعور */
+            background: radial-gradient(circle at center, #fff0f6 0%, #fce7f3 50%, #fbcfe8 100%);
             font-family: 'Segoe UI', Tahoma, sans-serif;
             display: flex;
             justify-content: center;
@@ -18,72 +19,85 @@
         }
 
         .game-container {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            border-radius: 40px;
-            box-shadow: 0 25px 50px -12px rgba(255, 79, 149, 0.25);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px); /* تأثير الزجاج السحري */
+            padding: 50px;
+            border-radius: 50px;
+            box-shadow: 0 20px 60px rgba(255, 79, 149, 0.3);
             text-align: center;
             width: 100%;
             max-width: 500px;
-            border: 2px solid #ff8fcf;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: transform 0.3s ease;
         }
 
         h1 {
             color: #d63384;
-            font-size: 2rem;
-            margin-bottom: 30px;
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 4px rgba(255, 143, 207, 0.3);
         }
 
         #question {
-            color: #4a044e;
-            font-size: 1.4rem;
-            margin-bottom: 25px;
-            line-height: 1.4;
+            color: #881337;
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+            line-height: 1.5;
         }
 
         #answers {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
         }
 
         .answer-btn {
-            background: #fff5f8;
+            background: linear-gradient(to right, #ffffff, #fff5f8);
             border: 2px solid #ffadd2;
-            padding: 15px;
-            border-radius: 20px;
+            padding: 18px;
+            border-radius: 25px;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: #be185d;
-            transition: all 0.3s ease;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .answer-btn:hover {
-            background: #ff8fcf;
+            background: #ff4f95;
             color: white;
-            transform: scale(1.02);
+            transform: scale(1.05);
+            border-color: #ff4f95;
+            box-shadow: 0 10px 20px rgba(255, 79, 149, 0.3);
         }
 
         #score {
-            font-size: 1.5rem;
-            color: #d63384;
+            font-size: 1.8rem;
+            color: #9d174d;
             font-weight: bold;
-            margin-top: 20px;
+            margin-top: 30px;
+            padding: 10px;
+            animation: fadeIn 1s ease-in;
         }
 
         .back {
             display: inline-block;
-            margin-top: 30px;
+            margin-top: 40px;
             color: #ff4f95;
             text-decoration: none;
             font-weight: bold;
-            opacity: 0.8;
+            font-size: 1.1rem;
             transition: 0.3s;
         }
 
         .back:hover {
-            opacity: 1;
-            text-decoration: underline;
+            transform: translateY(-3px);
+            text-shadow: 0 5px 10px rgba(255, 79, 149, 0.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -102,7 +116,7 @@
 
         <div id="score"></div>
 
-        <a href="index.html" class="back">🏠 العودة للرئيسية</a>
+        <a href="index.html" class="back">✨ العودة إلى الرئيسية</a>
     </div>
 
     <script src="app.js"></script>
