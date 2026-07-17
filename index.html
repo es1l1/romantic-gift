@@ -1,426 +1,66 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>❤️ لعبة الحب الرومانسية ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+<title>❤️ Love Adventure</title>
 
-<style>
+<link rel="stylesheet" href="style.css">
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Cairo',sans-serif;
-}
-
-body{
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:linear-gradient(-45deg,#ff4d8d,#ff7eb3,#ff5f9e,#ff2d75);
-background-size:400% 400%;
-animation:bgMove 10s ease infinite;
-overflow-x:hidden;
-padding:20px;
-position:relative;
-}
-
-@keyframes bgMove{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
-}
-
-.card{
-width:100%;
-max-width:550px;
-background:rgba(255,255,255,.15);
-backdrop-filter:blur(15px);
-border:1px solid rgba(255,255,255,.25);
-border-radius:30px;
-padding:25px;
-text-align:center;
-color:#fff;
-box-shadow:0 15px 40px rgba(0,0,0,.2);
-animation:fadeIn 1s ease;
-}
-
-@keyframes fadeIn{
-from{
-opacity:0;
-transform:translateY(30px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-h1{
-font-size:2rem;
-margin-bottom:15px;
-text-shadow:0 0 10px rgba(255,255,255,.5);
-}
-
-#score,#level{
-font-size:1.3rem;
-font-weight:bold;
-margin:10px 0;
-}
-
-#message{
-font-size:1.2rem;
-min-height:70px;
-margin:15px 0;
-line-height:1.8;
-}
-
-.buttons{
-position:relative;
-height:120px;
-display:flex;
-justify-content:center;
-align-items:center;
-gap:15px;
-}
-
-button{
-border:none;
-cursor:pointer;
-padding:12px 25px;
-border-radius:50px;
-font-size:18px;
-font-weight:bold;
-transition:.3s;
-}
-
-button:hover{
-transform:scale(1.05);
-}
-
-#yesBtn{
-background:#ff1744;
-color:white;
-box-shadow:0 0 20px rgba(255,23,68,.5);
-}
-
-#noBtn{
-background:#444;
-color:white;
-position:absolute;
-}
-
-.section{
-margin-top:25px;
-}
-
-.section h2{
-margin-bottom:15px;
-}
-
-.box{
-background:white;
-color:#ff2d75;
-padding:18px;
-border-radius:15px;
-font-size:1.2rem;
-font-weight:bold;
-min-height:70px;
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-.actionBtn{
-margin-top:12px;
-background:white;
-color:#ff2d75;
-}
-
-.heart{
-position:fixed;
-font-size:25px;
-pointer-events:none;
-animation:floatUp 4s linear forwards;
-z-index:999;
-}
-
-@keyframes floatUp{
-0%{
-transform:translateY(0) scale(0.8);
-opacity:1;
-}
-100%{
-transform:translateY(-100vh) scale(1.5);
-opacity:0;
-}
-}
-
-.glow{
-animation:glow 1.5s infinite alternate;
-}
-
-@keyframes glow{
-from{
-text-shadow:0 0 10px #fff;
-}
-to{
-text-shadow:0 0 25px #fff;
-}
-}
-
-.footer-love{
-margin-top:20px;
-font-size:18px;
-opacity:.9;
-}
-
-@media(max-width:600px){
-
-h1{
-font-size:1.6rem;
-}
-
-button{
-font-size:16px;
-padding:10px 20px;
-}
-
-#message{
-font-size:1rem;
-}
-
-.box{
-font-size:1rem;
-}
-
-}
-
-</style>
 </head>
+
+
 <body>
 
-<div class="card">
 
-<h1 class="glow">❤️ لعبة الحب الرومانسية ❤️</h1>
+<div class="container">
 
-<div id="score">نقاط الحب: 0</div>
 
-<div id="level">بداية الحب ❤️</div>
-
-<div id="message">
-اضغطي أحبك لبدء رحلة الحب 🌹
+<div class="heart">
+❤️
 </div>
 
-<div class="buttons">
-<button id="yesBtn">أحبك ❤️</button>
-<button id="noBtn">لا 💔</button>
-</div>
 
-<div class="section">
-<h2>🎡 عجلة الحب</h2>
+<h1>
+رحلة الحب
+</h1>
 
-<div id="wheel" class="box">
-اضغطي على زر اللف
-</div>
 
-<button class="actionBtn" onclick="spinWheel()">
-لف العجلة
-</button>
-</div>
+<p>
+لعبة رومانسية خاصة لكما 💕
+</p>
 
-<div class="section">
-<h2>❓ سؤال رومانسي</h2>
 
-<div id="questionBox" class="box">
-اضغطي على سؤال جديد
-</div>
+<h3 id="points"></h3>
 
-<button class="actionBtn" onclick="nextQuestion()">
-سؤال جديد
-</button>
-</div>
 
-<div class="footer-love">
-💕 صُنعت بكل الحب 💕
-</div>
+
+<a class="btn" href="wheel.html">
+🎡 عجلة الحظ
+</a>
+
+
+<a class="btn" href="questions.html">
+❓ اختبار الحب
+</a>
+
+
+
+<a class="btn" href="surprises.html">
+🎁 المفاجآت
+</a>
+
+
 
 </div>
 
-<script>
 
-let points=0;
+<script src="app.js"></script>
 
-const levels=[
-"بداية الحب ❤️",
-"إعجاب كبير 💕",
-"اشتياق دائم 💖",
-"حب مجنون 💘",
-"ملكة القلب 👑"
-];
-
-const messages=[
-"أنتِ أجمل شيء في حياتي 🌹",
-"كل يوم أحبك أكثر ❤️",
-"وجودك سعادة لا تنتهي 💕",
-"قلبي لا يعرف غيرك 💘",
-"أنتِ ملكة قلبي للأبد 👑"
-];
-
-const score=document.getElementById("score");
-const level=document.getElementById("level");
-const message=document.getElementById("message");
-
-document.getElementById("yesBtn")
-.addEventListener("click",()=>{
-
-points++;
-
-score.innerHTML=`نقاط الحب: ${points}`;
-
-let current=Math.min(
-Math.floor(points/5),
-levels.length-1
-);
-
-level.innerHTML=levels[current];
-message.innerHTML=messages[current];
-
-createHearts(15);
-
-});
-
-const noBtn=document.getElementById("noBtn");
-
-function moveNo(){
-
-const x=Math.random()*(window.innerWidth-150);
-const y=Math.random()*(window.innerHeight-100);
-
-noBtn.style.left=x+"px";
-noBtn.style.top=y+"px";
-
-}
-
-noBtn.addEventListener("mouseenter",moveNo);
-
-noBtn.addEventListener("touchstart",(e)=>{
-e.preventDefault();
-moveNo();
-});
-
-const prizes=[
-"🌹 وردة حمراء",
-"💌 رسالة حب",
-"❤️ +5 نقاط حب",
-"😘 قبلة افتراضية",
-"💖 قلب ذهبي",
-"👑 ملكة القلب"
-];
-
-function spinWheel(){
-
-const result=
-prizes[Math.floor(
-Math.random()*prizes.length
-)];
-
-document.getElementById("wheel")
-.innerHTML=result;
-
-if(result.includes("+5")){
-points+=5;
-score.innerHTML=`نقاط الحب: ${points}`;
-}
-
-createHearts(20);
-
-}
-
-const questions=[
-
-{
-q:"من أجمل شخص بالعالم؟",
-a:"أنتِ طبعاً ❤️"
-},
-{
-q:"من يسكن القلب؟",
-a:"أنتِ فقط 💕"
-},
-{
-q:"هل يوجد أجمل منك؟",
-a:"مستحيل 😍"
-},
-{
-q:"من يجعل يومي سعيداً؟",
-a:"أنتِ دائماً 🌹"
-},
-{
-q:"ما أجمل ابتسامة؟",
-a:"ابتسامتك 💖"
-},
-{
-q:"من أحب شخص عندي؟",
-a:"أنتِ ❤️"
-}
-
-];
-
-function nextQuestion(){
-
-const item=
-questions[
-Math.floor(
-Math.random()*questions.length
-)
-];
-
-document.getElementById("questionBox")
-.innerHTML=
-`${item.q}<br><br>${item.a}`;
-
-createHearts(10);
-
-}
-
-function createHearts(count){
-
-for(let i=0;i<count;i++){
-
-const heart=
-document.createElement("div");
-
-heart.className="heart";
-heart.innerHTML=
-["❤️","💕","💖","💘","🌹"][Math.floor(Math.random()*5)];
-
-heart.style.left=
-Math.random()*100+"vw";
-
-heart.style.bottom="0";
-
-heart.style.fontSize=
-(20+Math.random()*25)+"px";
-
-document.body.appendChild(heart);
-
-setTimeout(()=>{
-heart.remove();
-},4000);
-
-}
-
-}
-
-setInterval(()=>{
-createHearts(1);
-},1200);
-
-</script>
 
 </body>
+
 </html>
