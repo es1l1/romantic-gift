@@ -90,3 +90,22 @@ body {
 .btn:active {
     transform: scale(0.95); /* تأثير الضغط الواقعي */
 }
+/* إنشاء القلوب المتناثرة */
+body {
+    position: relative;
+    overflow-x: hidden; /* لمنع ظهور شريط تمرير أفقي بسبب القلوب */
+}
+
+.heart-fall {
+    position: absolute;
+    top: -10%;
+    color: rgba(255, 79, 149, 0.3); /* لون وردي شفاف */
+    font-size: 20px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
