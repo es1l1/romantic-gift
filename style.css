@@ -1,71 +1,25 @@
-/* style.css - الهوية البصرية الموحدة للموقع */
+/* الهوية البصرية الموحدة */
 :root {
-    --primary-color: #ff4f95;      /* الوردي الأساسي */
-    --secondary-color: #ff8fcf;    /* الوردي الفاتح */
-    --bg-gradient: linear-gradient(135deg, #fff0f6, #fce7f3);
+    --primary-color: #ff4f95;
+    --secondary-color: #ff8fcf;
+    --bg-gradient: linear-gradient(-45deg, #fff0f6, #fce7f3, #ffe4e6, #fbcfe8);
     --card-bg: rgba(255, 255, 255, 0.9);
     --text-color: #881337;
-    --shadow: 0 15px 35px rgba(255, 79, 149, 0.2);
 }
 
 body {
     margin: 0;
     min-height: 100vh;
     background: var(--bg-gradient);
-    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     direction: rtl;
     padding: 20px;
-}
-
-.game-container {
-    background: var(--card-bg);
-    backdrop-filter: blur(10px);
-    padding: 40px;
-    border-radius: 40px;
-    box-shadow: var(--shadow);
-    text-align: center;
-    width: 100%;
-    max-width: 500px;
-    border: 2px solid white;
-}
-
-h1 { color: var(--primary-color); font-size: 2.2rem; margin-bottom: 20px; }
-
-.btn {
-    display: inline-block;
-    background: var(--primary-color);
-    color: white;
-    padding: 15px 30px;
-    border-radius: 50px;
-    text-decoration: none;
-    transition: 0.3s;
-    font-weight: bold;
-    margin: 10px;
-    border: none;
-    cursor: pointer;
-}
-
-.btn:hover { transform: scale(1.05); background: #d63384; }
-
-.back {
-    display: block;
-    margin-top: 30px;
-    color: var(--primary-color);
-    text-decoration: none;
-    opacity: 0.7;
-}
-
-.back:hover { opacity: 1; text-decoration: underline; }
-/* أضف هذا الجزء لملف style.css الحالي */
-
-/* تأثير الخلفية الوردية المتحركة */
-body {
-    background: linear-gradient(-45deg, #fff0f6, #fce7f3, #ffe4e6, #fbcfe8);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
+    overflow-x: hidden;
 }
 
 @keyframes gradientBG {
@@ -74,46 +28,45 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* إضافة لمعة للقلوب والأسطح */
 .game-container {
-    border: 3px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 0 0 30px rgba(255, 79, 149, 0.2);
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 40px;
+    box-shadow: 0 15px 35px rgba(255, 79, 149, 0.2);
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+    border: 2px solid white;
 }
 
-/* تحسين شكل الأزرار لتكون أكثر "واقعية" */
 .btn {
-    box-shadow: 0 4px 15px rgba(255, 79, 149, 0.3);
+    display: block;
+    background: var(--primary-color);
+    color: white;
+    padding: 15px;
+    border-radius: 50px;
+    text-decoration: none;
+    margin: 10px auto;
     border: none;
     cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-.btn:active {
-    transform: scale(0.95); /* تأثير الضغط الواقعي */
-}
-/* إنشاء القلوب المتناثرة */
-body {
-    position: relative;
-    overflow-x: hidden; /* لمنع ظهور شريط تمرير أفقي بسبب القلوب */
-}
+.btn:hover { transform: scale(1.05); background: #d63384; }
 
+/* القلوب المتساقطة */
 .heart-fall {
     position: absolute;
     top: -10%;
-    color: rgba(255, 79, 149, 0.3); /* لون وردي شفاف */
+    color: rgba(255, 79, 149, 0.4);
     font-size: 20px;
     animation: fall linear infinite;
+    z-index: 1;
+    pointer-events: none;
 }
-.heart-fall {
-    position: absolute;
-    top: -10%;
-    color: rgba(255, 79, 149, 0.4); /* زيادة الشفافية قليلاً لتكون أوضح */
-    font-size: 20px;
-    animation: fall linear infinite;
-    z-index: 1; /* لجعلها تظهر فوق الخلفية */
-    pointer-events: none; /* مهم جداً: لكي لا تمنع الضغط على الأزرار */
-}
+
 @keyframes fall {
-    to {
-        transform: translateY(110vh) rotate(360deg);
-    }
+    to { transform: translateY(110vh) rotate(360deg); }
 }
