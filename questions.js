@@ -1,5 +1,4 @@
 // questions.js
-
 // 1. مصفوفة الأسئلة
 const quizData = [
     {
