@@ -103,7 +103,15 @@ body {
     font-size: 20px;
     animation: fall linear infinite;
 }
-
+.heart-fall {
+    position: absolute;
+    top: -10%;
+    color: rgba(255, 79, 149, 0.4); /* زيادة الشفافية قليلاً لتكون أوضح */
+    font-size: 20px;
+    animation: fall linear infinite;
+    z-index: 1; /* لجعلها تظهر فوق الخلفية */
+    pointer-events: none; /* مهم جداً: لكي لا تمنع الضغط على الأزرار */
+}
 @keyframes fall {
     to {
         transform: translateY(110vh) rotate(360deg);
